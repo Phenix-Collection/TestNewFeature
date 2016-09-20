@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.wenjunzhong.testnewfeature.widgets.CustomerPasswordEditLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/custom_edit_layout_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        tools:src="@drawable/ic_launcher_trashcan_normal_holo"/>
+
+
+    <EditText
+        android:id="@+id/custom_edit_layout_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_toLeftOf="@+id/custom_edit_layout_img"
+        android:layout_toStartOf="@+id/custom_edit_layout_img"
+        android:maxLines="1"
+        tools:hint="Password"
+        android:layout_alignWithParentIfMissing="true"/>
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/custom_edit_layout_tip_img"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!---->
+        <!--/>-->
+
+</com.example.wenjunzhong.testnewfeature.widgets.CustomerPasswordEditLayout>

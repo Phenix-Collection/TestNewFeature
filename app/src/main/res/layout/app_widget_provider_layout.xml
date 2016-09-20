@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/app_widget_power"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@drawable/power_button"
+         />
+    <ImageView
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/darker_gray"/>
+
+    <ImageButton
+        android:id="@+id/app_widget_vol_down"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <ImageButton
+        android:id="@+id/app_widget_rewind"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <ImageButton
+        android:id="@+id/app_widget_play_stop"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <ImageButton
+        android:id="@+id/app_widget_fast_forward"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <ImageButton
+        android:id="@+id/app_widget_vol_up"
+        style="@style/AppWidgetButtonStyle"
+        android:src="@mipmap/ic_launcher"
+        />
+    
+</LinearLayout>
