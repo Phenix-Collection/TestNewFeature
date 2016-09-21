@@ -1,14 +1,15 @@
 package com.example.wenjunzhong.testnewfeature;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.design.widget.TextInputLayout;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 /**
@@ -23,7 +24,17 @@ public class TextInputlayoutActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.textinput_activity);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
+            // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            // toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+
+            View statusBarView = findViewById(R.id.status_bar_view);
+            statusBarView.getLayoutParams().height = getStatusBarHeight();
+
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        }
         userEdit = (EditText) findViewById(R.id.user_edit);
 
 //        findViewById(R.id.password_button).setOnClickListener(new View.OnClickListener() {
@@ -68,5 +79,14 @@ public class TextInputlayoutActivity extends AppCompatActivity{
         });
 
 
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 }

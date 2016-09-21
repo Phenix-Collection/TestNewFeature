@@ -73,7 +73,6 @@ public class ShowHidePasswordEditText extends EditText {
         } else {
             visibilityIndicatorShow = R.drawable.ic_visibility_grey_900_24dp;
             visibilityIndicatorHide = R.drawable.ic_visibility_off_grey_900_24dp;
-
         }
 
         leftToRight = isLeftToRight();

@@ -3,8 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/status_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#00ffff" />
+    <!--android:background="@color/colorPrimary"-->
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+    <!--android:paddingTop="@dimen/toolbar_padding_top"-->
 
 
     <android.support.design.widget.TextInputLayout
@@ -50,10 +65,17 @@
 
     <include layout="@layout/customer_edit_layout"/>
 
+    <android.support.design.widget.TextInputLayout
+        app:passwordToggleEnabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <com.example.wenjunzhong.testnewfeature.widgets.ShowHidePasswordEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
         app:drawable_show="@drawable/ic_launcher_trashcan_active_holo"
         app:drawable_hide="@drawable/ic_launcher_trashcan_normal_holo"/>
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>
