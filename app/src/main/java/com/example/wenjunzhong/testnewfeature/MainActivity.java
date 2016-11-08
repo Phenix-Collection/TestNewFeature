@@ -1,10 +1,11 @@
 package com.example.wenjunzhong.testnewfeature;
 
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -12,6 +13,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            View statusBarView = findViewById(R.id.status_bar_view);
+            statusBarView.getLayoutParams().height = getStatusBarHeight();
+
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        }
     }
 
     @Override
@@ -29,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_4:
                 gotoActivity(TextInputlayoutActivity.class);
                 break;
+            case R.id.button_5:
+                gotoActivity(TestFragmentActivity.class);
+                break;
             default:
                 break;
         }
@@ -37,5 +50,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void gotoActivity(Class<?> cls){
         Intent intent = new Intent(this, cls);
         startActivity(intent);
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 }

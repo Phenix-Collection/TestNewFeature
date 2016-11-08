@@ -3,7 +3,6 @@ package com.example.wenjunzhong.testnewfeature;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
 /**
@@ -20,8 +19,9 @@ public class SnackBarActivity extends BaseActivity{
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Snackbar snackbar = Snackbar.make(v, "abcd", Snackbar.LENGTH_SHORT);
-                snackbar.show();
+                // Snackbar snackbar = Snackbar.make(v, "abcd", Snackbar.LENGTH_SHORT);
+                // snackbar.show();
+                mRecyclerView.smoothScrollBy(0, -900);
             }
         });
     }
