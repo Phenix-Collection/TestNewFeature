@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+def apkNameDate = new Date().format("yyyyMMdd_HHmmss");
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
@@ -11,10 +11,36 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    productFlavors {
+        googleplay {
+        }
+        others {
+        }
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        def buildType = variant.buildType
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName
+                if (buildType.name.equals("debug")) {
+                    fileName = "Test_v" + defaultConfig.versionName + "_" + buildType.name + "_${variant.productFlavors[0].name}" + ".apk"
+                } else {
+                    fileName = "Test_v" + defaultConfig.versionName + "_" + apkNameDate + "_" + buildType.name + "_${variant.productFlavors[0].name}" + ".apk"
+                }
+                output.outputFile = new File(outputFile.parent + "/v" + defaultConfig.versionName, fileName)
+            }
         }
     }
 }
