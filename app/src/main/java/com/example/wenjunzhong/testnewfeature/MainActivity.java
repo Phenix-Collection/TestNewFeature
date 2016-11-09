@@ -25,10 +25,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.button_1:
-                gotoActivity(SnackBarActivity.class);
+                // gotoActivity(SnackBarActivity.class);
+                startReadThred();
                 break;
             case R.id.button_2:
                 gotoActivity(ToolbarScrollActivity.class);
@@ -59,5 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    private void startReadThred() {
+        new ReadThread().start();
     }
 }
