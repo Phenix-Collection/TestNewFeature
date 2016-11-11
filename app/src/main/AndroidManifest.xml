@@ -41,6 +41,12 @@
                 android:resource="@xml/app_widget_4x1"/>
         </receiver>
 
+        <receiver android:name=".alarm.AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.alarm.voyager.ALARM_RECEIVER" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
