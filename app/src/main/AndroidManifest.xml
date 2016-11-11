@@ -28,7 +28,9 @@
         <activity android:name=".SwipeRefreshActivity"/>
 
         <activity android:name=".TextInputlayoutActivity"/>
-        <activity android:name=".TestFragmentActivity" />
+        <activity
+            android:name=".TestFragmentActivity"
+            android:launchMode="singleTask" />
 
         <receiver android:name=".appwidget.AppWidget41Provider">
             <intent-filter>
