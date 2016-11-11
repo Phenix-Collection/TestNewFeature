@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.wenjunzhong.testnewfeature.alarm.SendNotification;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -39,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.button_1:
                 // gotoActivity(SnackBarActivity.class);
-                startReadThred();
+                // startReadThred();
+                SendNotification.sendNotification(this);
                 break;
             case R.id.button_2:
                 gotoActivity(ToolbarScrollActivity.class);

@@ -1,5 +1,6 @@
 package com.example.wenjunzhong.testnewfeature;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -28,12 +29,29 @@ public class TestFragmentActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private int[] mTitleId;
     private int mSelectedTab;
+    private boolean isToPlanFragment = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_fragment_layout);
+        isToPlanFragment = getIntent().getBooleanExtra("isToPlanFragment", false);
+        if (DEBUG) {
+            Log.w("isToPlan", "onCreate isToPlanFragment: " + isToPlanFragment);
+        }
         setupView();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        isToPlanFragment = intent.getBooleanExtra("isToPlanFragment", false);
+        if (isToPlanFragment) {
+            gotoPlansFragment();
+        }
+        if (DEBUG) {
+            Log.w("isToPlan", "onNewIntent isToPlanFragment: " + isToPlanFragment);
+        }
     }
 
     private void setupView() {
@@ -49,8 +67,11 @@ public class TestFragmentActivity extends AppCompatActivity {
         mTitleId = new int[count];
         for (int i = 0; i < count; i++) {
             TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            if (i == 0) {
+            if ((isToPlanFragment && i == 1) || (!isToPlanFragment && i == 0)) {
                 setSelectedTab(tab);
+                if (i == 1) {
+                    gotoPlansFragment();
+                }
             } else {
                 setUnSelectedTab(tab);
             }
@@ -131,6 +152,10 @@ public class TestFragmentActivity extends AppCompatActivity {
                 tab.setIcon(R.drawable.tab_help);
                 break;
         }
+    }
+
+    public void gotoPlansFragment() {
+        mViewPager.setCurrentItem(1, true);
     }
 
     // public void onClickItem(View view) {
