@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_1:
                 // gotoActivity(SnackBarActivity.class);
                 // startReadThred();
-                // SendNotification.sendNotification(this);
-                AlarmManagerUtil.setAlarm(this.getApplicationContext(), false);
+                AlarmManagerUtil.startAlarm(this.getApplicationContext());
                 break;
             case R.id.button_2:
                 gotoActivity(ToolbarScrollActivity.class);

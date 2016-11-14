@@ -12,7 +12,7 @@ import android.util.Log;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.w("Alarm", "onReceive");
+        Log.w(AlarmManagerUtil.TAG, "onReceive");
         SendNotification.sendNotification(context);
     }
 }

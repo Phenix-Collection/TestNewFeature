@@ -9,10 +9,17 @@ import android.app.Application;
 public class TestApplication extends Application {
 
     public static long startTime;
+    private static TestApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         startTime = System.currentTimeMillis();
+    }
+
+
+    public static TestApplication getInstance() {
+        return instance;
     }
 }
