@@ -45,7 +45,13 @@
 
         <receiver android:name=".alarm.AlarmReceiver">
             <intent-filter>
-                <action android:name="android.alarm.voyager.ALARM_RECEIVER" />
+                <action android:name="android.alarm.voyager.ALARM_EXPIRED_ACTION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.alarm.voyager.ALARM_MONTH_ACTION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.alarm.voyager.ALARM_DAY_ACTION" />
             </intent-filter>
         </receiver>
 
