@@ -34,22 +34,22 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
     }
 
-    public void onClickButton(View view) {
+    public void onClickNButton(View view) {
         switch (view.getId()) {
-            case R.id.for_button:
+            case R.id.n_for_button:
                 sendNotification(index);
                 index++;
                 break;
-            case R.id.button_1:
+            case R.id.n_button_1:
                 sendNotification(BUTTON_1_NOTIFICATION_ID);
                 break;
-            case R.id.button_2:
+            case R.id.n_button_2:
                 sendNotification(BUTTON_2_NOTIFICATION_ID);
                 break;
-            case R.id.button_3:
+            case R.id.n_button_3:
                 sendNotification(BUTTON_3_NOTIFICATION_ID);
                 break;
-            case R.id.button_4:
+            case R.id.n_button_4:
                 Intent intent = new Intent(this, MyService.class);
                 if (isStopService) {
                     stopService(intent);

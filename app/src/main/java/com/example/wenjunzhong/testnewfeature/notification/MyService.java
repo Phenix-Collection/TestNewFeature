@@ -43,7 +43,7 @@ public class MyService extends Service {
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         Notification notification = builder.build();
-        notification.flags = Notification.FLAG_NO_CLEAR;
+        notification.flags = Notification.FLAG_NO_CLEAR | Notification.FLAG_FOREGROUND_SERVICE;
         startForeground(5, builder.build());
     }
 
