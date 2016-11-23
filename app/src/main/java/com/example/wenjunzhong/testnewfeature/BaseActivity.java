@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
+
 /**
  * Created by wenjun.zhong on 2016/4/14.
  */
@@ -30,5 +32,17 @@ public class BaseActivity extends AppCompatActivity{
         mRecyclerView = (RecyclerView) findViewById(R.id.name_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new RecyclerAdapter(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        StatisticalAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        StatisticalAgent.onPause(this);
     }
 }

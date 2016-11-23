@@ -64,4 +64,11 @@
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
         android:text="TestFragment" />
+
+    <Button
+        android:id="@+id/button_6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:onClick="onClick"
+        android:text="Notification" />
 </LinearLayout>
