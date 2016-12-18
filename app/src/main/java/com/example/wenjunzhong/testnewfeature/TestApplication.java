@@ -2,6 +2,8 @@ package com.example.wenjunzhong.testnewfeature;
 
 import android.app.Application;
 
+import com.tendcloud.tenddata.TCAgent;
+
 /**
  * Created by wenjun.zhong on 2016/11/9.
  */
@@ -9,10 +11,19 @@ import android.app.Application;
 public class TestApplication extends Application {
 
     public static long startTime;
+    private static TestApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         startTime = System.currentTimeMillis();
+
+        TCAgent.LOG_ON=true;
+    }
+
+
+    public static TestApplication getInstance() {
+        return instance;
     }
 }

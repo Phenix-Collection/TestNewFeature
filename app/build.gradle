@@ -46,7 +46,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // 默认不添加TaklingData统计sdk
+    compile fileTree(dir: 'libs',excludes: ['TalkingData_*.jar'], include: ['*.jar'])
+    googleplayCompile files("libs/TalkingData_Analytics_Android_SDK_GP_V2_2_37.jar")
+    othersCompile files("libs/TalkingData_Analytics_Android_SDK_V2_2_46.jar")
+
+
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
