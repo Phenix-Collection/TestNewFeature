@@ -8,8 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.wenjunzhong.testnewfeature.alarm.AlarmManagerUtil;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
+import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_6:
                 gotoActivity(NotificationActivity.class);
                 break;
+            case R.id.button_7:
+//                gotoActivity(TestNetworkConnectChangeActivity.class);
+                startServices(SystemDialogService.class);
+                break;
             default:
                 break;
         }
@@ -76,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void gotoActivity(Class<?> cls){
         Intent intent = new Intent(this, cls);
         startActivity(intent);
+    }
+
+    private void startServices(Class<?> cls){
+        Intent intent = new Intent(this, cls);
+        startService(intent);
     }
 
     public int getStatusBarHeight() {
@@ -108,5 +117,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.w("talkingData", "end talkingData ");
             }
         }).start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        startServices(SystemDialogService.class);
     }
 }
