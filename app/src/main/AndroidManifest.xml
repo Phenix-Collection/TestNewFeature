@@ -121,6 +121,7 @@
             android:process=":reporter"/>
         <activity android:name=".binder.BinderActivity"/>
 
+        <activity android:name=".WebViewActivity"/>
     </application>
 
 </manifest>

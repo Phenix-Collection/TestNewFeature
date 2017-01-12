@@ -9,9 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 
 import com.example.wenjunzhong.testnewfeature.binder.BinderActivity;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
@@ -20,6 +22,9 @@ import com.example.wenjunzhong.testnewfeature.services.DeviceService;
 import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -85,11 +90,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-                gotoActivity(BinderActivity.class);
+                gotoActivity(WebViewActivity.class);
 //                startServices(SystemDialogService.class);
 //                deviceAdmin();
 //                index++;
 //                propertyAnimation(v, index);
+//                String result = md5Encrypt("654321");
+//                Log.w("md5", result);
                 break;
             default:
                 break;
@@ -167,5 +174,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void propertyAnimation(View view, int index ){
         ObjectAnimator.ofFloat(view, "translationY", getResources().getDimensionPixelSize(R.dimen.button_height) * index).setDuration(100).start();
+    }
+
+
+    public static String md5Encrypt(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return " ";
+        }
+        MessageDigest md5;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            return " ";
+        }
+        byte[] bytes = new byte[0];
+        try {
+            bytes = md5.digest(str.getBytes("utf-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        StringBuilder builder = new StringBuilder();
+        String temp;
+        for (byte b : bytes) {
+            temp = Integer.toHexString(b & 0xff);
+            if (temp.length() == 1) {
+                builder.append(0);
+            }
+            builder.append(temp);
+        }
+        return builder.toString();
     }
 }
