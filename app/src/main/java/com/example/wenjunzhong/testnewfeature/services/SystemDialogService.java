@@ -52,8 +52,8 @@ public class SystemDialogService extends Service implements View.OnClickListener
         mContext = getApplicationContext();
         Log.w("systemDialog", "show system dialog onStartCommand");
         if(overPopTime()){
-//            popAlertWindow();
-            showDialog();
+            popAlertWindow();
+//            showDialog();
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -82,12 +82,14 @@ public class SystemDialogService extends Service implements View.OnClickListener
         mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         mLayoutParams = new WindowManager.LayoutParams();
         mLayoutParams.type= WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;// 系统提示window
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED  | WindowManager.LayoutParams.FLAG_DIM_BEHIND ;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED  | WindowManager.LayoutParams.FLAG_DIM_BEHIND  |
+        WindowManager.LayoutParams.FLAG_LAYOUT_IN_OVERSCAN;
         mLayoutParams.width = 800;
         mLayoutParams.height = 400;
         mLayoutParams.gravity = Gravity.CENTER;
         mLayoutParams.dimAmount = 0.7f;
-//        mLayoutParams.format = PixelFormat.RGBA_8888;
+//        mLayoutParams.format = PixelFormat.TRANSLUCENT;
+        mLayoutParams.windowAnimations = android.R.style.Animation_Dialog;
 
         mPopView = View.inflate(mContext, R.layout.update_alert_view,null);
         initView(mPopView);

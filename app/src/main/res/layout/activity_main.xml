@@ -31,6 +31,7 @@
         android:layout_height="@dimen/button_height"
         android:text="snackbar activity"
         android:onClick="onClick"
+        android:visibility="gone"
         />
 
     <Button
@@ -39,6 +40,7 @@
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
         android:text="toolbar scroll"
+        android:visibility="gone"
         />
 
     <Button
@@ -55,6 +57,7 @@
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
         android:text="TextInputLayout"
+        android:visibility="gone"
         />
 
 
@@ -77,5 +80,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
-        android:text="TestConnectivity" />
+        android:text="BinderActivity" />
 </LinearLayout>

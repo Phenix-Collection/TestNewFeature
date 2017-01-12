@@ -1,18 +1,32 @@
 package com.example.wenjunzhong.testnewfeature;
 
+import android.animation.ObjectAnimator;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.wenjunzhong.testnewfeature.binder.BinderActivity;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
+import com.example.wenjunzhong.testnewfeature.services.DeviceAdminDemo;
+import com.example.wenjunzhong.testnewfeature.services.DeviceService;
 import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
+    private int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
+
     }
 
     @Override
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Log.w("onClick", " " + v.getId());
         switch(v.getId()){
             case R.id.button_1:
                 // gotoActivity(SnackBarActivity.class);
@@ -69,8 +85,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-//                gotoActivity(TestNetworkConnectChangeActivity.class);
-                startServices(SystemDialogService.class);
+                gotoActivity(BinderActivity.class);
+//                startServices(SystemDialogService.class);
+//                deviceAdmin();
+//                index++;
+//                propertyAnimation(v, index);
                 break;
             default:
                 break;
@@ -124,5 +143,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
 
         startServices(SystemDialogService.class);
+    }
+
+    private void deviceAdmin(){
+        // 自动获得Admin权限以及锁屏
+        DevicePolicyManager dManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+        ComponentName name = new ComponentName(getApplicationContext(), DeviceAdminDemo.class);//当前activity和获得权限的receiver
+        final int myUserId = UserHandle.myUserId();
+//        dManager.setActiveAdmin(name, false, myUserId);
+        try {
+//            dManager.setProfileOwner(name, "SystemUI", myUserId);
+            dManager.setActiveProfileOwner(name, "SystemUI");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        boolean isActive = dManager.isAdminActive(name);
+        Log.w("deviceService", isActive + "");
+
+        List<ComponentName> lists = dManager.getActiveAdmins();
+
+        Log.w("deviceService", Arrays.toString(lists.toArray()));
+    }
+
+    private void propertyAnimation(View view, int index ){
+        ObjectAnimator.ofFloat(view, "translationY", getResources().getDimensionPixelSize(R.dimen.button_height) * index).setDuration(100).start();
     }
 }
