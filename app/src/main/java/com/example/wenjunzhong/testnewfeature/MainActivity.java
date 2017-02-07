@@ -1,32 +1,22 @@
 package com.example.wenjunzhong.testnewfeature;
 
 import android.animation.ObjectAnimator;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebView;
 
-import com.example.wenjunzhong.testnewfeature.binder.BinderActivity;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
-import com.example.wenjunzhong.testnewfeature.services.DeviceAdminDemo;
-import com.example.wenjunzhong.testnewfeature.services.DeviceService;
-import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,11 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.w("onClick", " " + v.getId());
         switch(v.getId()){
             case R.id.button_1:
-                // gotoActivity(SnackBarActivity.class);
-                // startReadThred();
-                startTestThread();
-//                AlarmManagerUtil.startAlarm(this.getApplicationContext(), "2016-12-01 14:34:07");
-//                StatisticalAgent.onEvent(this, "login", "1");
+                gotoActivity(SnackBarActivity.class);
                 break;
             case R.id.button_2:
                 gotoActivity(ToolbarScrollActivity.class);
@@ -90,13 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-                gotoActivity(WebViewActivity.class);
-//                startServices(SystemDialogService.class);
-//                deviceAdmin();
-//                index++;
-//                propertyAnimation(v, index);
-//                String result = md5Encrypt("654321");
-//                Log.w("md5", result);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                Uri content_url = Uri.parse("http://www.goplaycn.com/?from=netpas");
+                intent.setData(content_url);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
                 break;
             default:
                 break;
@@ -148,28 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        startServices(SystemDialogService.class);
-    }
-
-    private void deviceAdmin(){
-        // 自动获得Admin权限以及锁屏
-        DevicePolicyManager dManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        ComponentName name = new ComponentName(getApplicationContext(), DeviceAdminDemo.class);//当前activity和获得权限的receiver
-        final int myUserId = UserHandle.myUserId();
-//        dManager.setActiveAdmin(name, false, myUserId);
-        try {
-//            dManager.setProfileOwner(name, "SystemUI", myUserId);
-            dManager.setActiveProfileOwner(name, "SystemUI");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        boolean isActive = dManager.isAdminActive(name);
-        Log.w("deviceService", isActive + "");
-
-        List<ComponentName> lists = dManager.getActiveAdmins();
-
-        Log.w("deviceService", Arrays.toString(lists.toArray()));
     }
 
     private void propertyAnimation(View view, int index ){

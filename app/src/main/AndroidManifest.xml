@@ -84,37 +84,25 @@
         <activity android:name=".notification.NotificationActivity"/>
         <service android:name=".notification.MyService"/>
 
-        <service android:name=".services.SystemDialogService"/>
 
-        <receiver android:name=".UserPresentBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter android:priority="100000">
-                <action android:name="android.intent.action.USER_PRESENT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
+        <!-- <service android:name=".services.DeviceService"
+             android:permission="android.permission.BIND_DEVICE_ADMIN" >
+             <intent-filter >
+                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+             </intent-filter>
+         </service>
 
-        <service android:name=".services.DeviceService"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
-            <intent-filter >
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-            </intent-filter>
-        </service>
+         <receiver
+             android:name=".services.DeviceAdminDemo"
+             android:permission="android.permission.BIND_DEVICE_ADMIN" >
 
-        <receiver
-            android:name=".services.DeviceAdminDemo"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
-
-            <meta-data
-                android:name="android.app.device_admin"
-                android:resource="@xml/device_admin" />
-            <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-            </intent-filter>
-        </receiver>
+             <meta-data
+                 android:name="android.app.device_admin"
+                 android:resource="@xml/device_admin" />
+             <intent-filter>
+                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+             </intent-filter>
+         </receiver>-->
 
 
         <service android:name=".binder.ReporterBinderService"
