@@ -2,7 +2,7 @@
     <string name="app_name">TestNewFeature</string>
     <string name="home">home</string>
     <string name="help">help</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="title_activity_main2">Main2Activity</string>
     <string name="update">是否升级SystemUI</string>

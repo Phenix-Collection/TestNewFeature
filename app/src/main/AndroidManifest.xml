@@ -110,6 +110,10 @@
         <activity android:name=".binder.BinderActivity"/>
 
         <activity android:name=".WebViewActivity"/>
+
+        <activity
+            android:name=".admob.AdmobActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

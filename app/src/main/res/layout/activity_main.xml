@@ -80,5 +80,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
-        android:text="BinderActivity" />
+        android:text="AdmobActivity" />
 </LinearLayout>

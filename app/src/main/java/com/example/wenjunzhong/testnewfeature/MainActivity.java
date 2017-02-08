@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.wenjunzhong.testnewfeature.admob.AdmobActivity;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
@@ -76,16 +77,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                Uri content_url = Uri.parse("http://www.goplaycn.com/?from=netpas");
-                intent.setData(content_url);
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
+                gotoActivity(AdmobActivity.class);
                 break;
             default:
                 break;
+        }
+    }
+
+
+    private void googleServices() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        Uri content_url = Uri.parse("http://www.goplaycn.com/?from=netpas");
+        intent.setData(content_url);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
         }
     }
 
