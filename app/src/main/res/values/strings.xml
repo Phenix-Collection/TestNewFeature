@@ -6,4 +6,9 @@
 
     <string name="title_activity_main2">Main2Activity</string>
     <string name="update">是否升级SystemUI</string>
+    <string name="lock_screen_update">Lock screen update</string>
+    <string name="new_version">1.A new version of the lock screen is available</string>
+    <string name="update_restart">2.Install it and restart</string>
+    <string name="tip_cancel">CANCEL</string>
+    <string name="tip_update">INSTALL</string>
 </resources>

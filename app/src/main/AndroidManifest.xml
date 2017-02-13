@@ -114,6 +114,8 @@
         <activity
             android:name=".admob.AdmobActivity"
             android:screenOrientation="portrait" />
+
+        <service android:name=".services.SystemDialogService"/>
     </application>
 
 </manifest>

@@ -3,11 +3,13 @@ package com.example.wenjunzhong.testnewfeature.services;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -52,8 +54,8 @@ public class SystemDialogService extends Service implements View.OnClickListener
         mContext = getApplicationContext();
         Log.w("systemDialog", "show system dialog onStartCommand");
         if(overPopTime()){
-            popAlertWindow();
-//            showDialog();
+//            popAlertWindow();
+            showDialog();
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -130,14 +132,35 @@ public class SystemDialogService extends Service implements View.OnClickListener
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void showDialog(){
-        View rootView = View.inflate(getApplicationContext(), R.layout.update_alert_view,null);
-        mAlertDialog = new AlertDialog.Builder(getApplicationContext())
-                .setView(rootView)
-                .create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext(), android.R.style.Theme_Material_Light_Dialog);
+        builder.setTitle(R.string.lock_screen_update);
+        builder.setMessage(getString(R.string.new_version) + "\n\n" + getString(R.string.update_restart));
+        builder.setPositiveButton(R.string.tip_update, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(mAlertDialog != null && mAlertDialog.isShowing()) {
+                    mAlertDialog.dismiss();
+                    mAlertDialog = null;
+                }
+            }
+        });
+        builder.setNegativeButton(R.string.tip_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Log.w("updateDialog", "onDismiss");
+            }
+        });
+        mAlertDialog = builder.create();
         mAlertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         mAlertDialog.setCanceledOnTouchOutside(false);
         mAlertDialog.show();
-        initView(rootView);
     }
 }

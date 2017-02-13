@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.example.wenjunzhong.testnewfeature.admob.AdmobActivity;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
+import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
@@ -77,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-                gotoActivity(AdmobActivity.class);
+//                gotoActivity(AdmobActivity.class);
+                startServices(SystemDialogService.class);
                 break;
             default:
                 break;
