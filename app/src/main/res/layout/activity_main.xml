@@ -81,4 +81,11 @@
         android:layout_height="@dimen/button_height"
         android:onClick="onClick"
         android:text="AdmobActivity" />
+
+    <Button
+        android:id="@+id/button_8"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:onClick="onClick"
+        android:text="RecyclerViewAnimation" />
 </LinearLayout>

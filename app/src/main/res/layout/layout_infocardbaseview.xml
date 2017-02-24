@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/views_shared_infocardbaseview_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/views_shared_infocard_item_marginLeft"
+        android:layout_marginRight="@dimen/views_shared_infocard_item_marginRight"
+        android:background="@color/regular_divider_color"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/views_shared_infocardbaseview_detail_text"
+        android:layout_width="@dimen/views_shared_infocard_open_indication_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:alpha="1"
+        android:gravity="center"
+        android:paddingLeft="@dimen/views_shared_infocard_item_marginLeft"
+        android:text="@string/views_shared_infocardbaseview_detail"
+        android:textColor="@color/white"
+        android:textSize="@dimen/views_shared_infocard_dismiss_textsize"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/views_shared_infocardbaseview_dismiss_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha="1"
+        android:gravity="center"
+        android:paddingLeft="@dimen/views_shared_infocard_dismiss_paddingleft"
+        android:paddingRight="@dimen/views_shared_infocard_item_marginRight"
+        android:text="@string/views_shared_infocardbaseview_dismisstext"
+        android:textColor="@color/white"
+        android:textSize="@dimen/views_shared_infocard_dismiss_textsize"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/views_shared_infocardbaseview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layerType="software"
+        android:orientation="horizontal"
+        android:visibility="visible"></LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/views_shared_infocardbaseview_leftswipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/views_shared_infocardbaseview_actionlist"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

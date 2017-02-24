@@ -2,6 +2,7 @@ package com.example.wenjunzhong.testnewfeature;
 
 import android.app.Application;
 
+import com.github.moduth.blockcanary.BlockCanary;
 import com.tendcloud.tenddata.TCAgent;
 
 /**
@@ -18,7 +19,7 @@ public class TestApplication extends Application {
         super.onCreate();
         instance = this;
         startTime = System.currentTimeMillis();
-
+        BlockCanary.install(this, new AppBlockCanaryContext());
         TCAgent.LOG_ON=true;
     }
 

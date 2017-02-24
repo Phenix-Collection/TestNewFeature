@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.wenjunzhong.testnewfeature.admob.AdmobActivity;
+import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
-import com.example.wenjunzhong.testnewfeature.services.SystemDialogService;
+import com.example.wenjunzhong.testnewfeature.recyclerviewanimator.RecyclerAnimationActivity;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
@@ -78,8 +78,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotoActivity(NotificationActivity.class);
                 break;
             case R.id.button_7:
-//                gotoActivity(AdmobActivity.class);
-                startServices(SystemDialogService.class);
+                // SystemClock.sleep(5100);
+                // startServices(SystemDialogService.class);
+                TestHandlerThread testHandlerThread = new TestHandlerThread();
+                testHandlerThread.start();
+                break;
+            case R.id.button_8:
+                gotoActivity(RecyclerAnimationActivity.class);
                 break;
             default:
                 break;

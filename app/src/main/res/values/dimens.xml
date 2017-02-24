@@ -5,4 +5,30 @@
 
     <dimen name="button_height">60dp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
+
+    <!--InfoCardBaseView parameter begin-->
+    <dimen name="views_shared_scrolltocallview_action_max_scroll_distance">93dp</dimen>
+    <dimen name="views_shared_infocard_dismiss_indication_width">105dp</dimen>
+    <dimen name="views_shared_infocard_dismiss_marginLeft">50dp</dimen>
+    <dimen name="views_shared_infocard_dismiss_paddingleft">16dp</dimen>
+    <dimen name="views_shared_infocard_dismiss_textsize">15sp</dimen>
+    <dimen name="views_shared_infocard_dismiss_width">50dp</dimen>
+    <dimen name="views_shared_infocard_fadingEdgeLength">100dp</dimen>
+    <dimen name="views_shared_infocard_item_action_marginRight">14dp</dimen>
+    <dimen name="views_shared_infocard_item_marginLeft">14dp</dimen>
+    <dimen name="views_shared_infocard_item_marginRight">14dp</dimen>
+    <dimen name="views_shared_infocard_open_indication_width">70dp</dimen>
+    <dimen name="views_shared_infocardactionview_image_height">30dp</dimen>
+    <dimen name="views_shared_infocardactionview_image_width">30dp</dimen>
+    <dimen name="views_shared_infocardactionview_testsize">16sp</dimen>
+    <dimen name="views_shared_infocardactionview_text_width">90dp</dimen>
+    <dimen name="views_shared_infocardactionview_width">98dp</dimen>
+    <dimen name="views_shared_infocardbaseview_divider_height">1px</dimen>
+    <dimen name="views_shared_infocardsection_icon_marginTop">-5dp</dimen>
+    <dimen name="views_shared_inforcardbaseview_action_icon_padding">8dp</dimen>
+    <dimen name="views_shared_inforcardbaseview_action_icon_width">36dp</dimen>
+    <dimen name="views_shared_inforcardbaseview_scroll_left">100dp</dimen>
+    <dimen name="views_shared_inforcardbaseview_scroll_right">55dp</dimen>
+    <dimen name="views_shared_scrolltocallview_min_scrolldistance">15dp</dimen>
+    <!--InfoCardBaseView parameter end-->
 </resources>

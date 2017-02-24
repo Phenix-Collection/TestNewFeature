@@ -11,4 +11,7 @@
     <string name="update_restart">2.Install it and restart</string>
     <string name="tip_cancel">CANCEL</string>
     <string name="tip_update">INSTALL</string>
+
+    <string name="views_shared_infocardbaseview_detail">Open</string>
+    <string name="views_shared_infocardbaseview_dismisstext">Dismiss</string>
 </resources>

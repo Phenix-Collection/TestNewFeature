@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.wenjunzhong.testnewfeature.BuildConfig;
 import com.example.wenjunzhong.testnewfeature.R;
 
 
@@ -35,7 +36,14 @@ public class SystemDialogService extends Service implements View.OnClickListener
     private AlertDialog mAlertDialog;
 
     public static final String LAST_POP_TIME="lastTime";//上次弹框出现的时间
-    public static final int TIME_INTERVAL = 2*60*1000;//3 * 60 * 60 * 1000;//弹框弹出的时间间隔
+    private static int TIME_INTERVAL;
+    static {
+        if (BuildConfig.DEBUG) {
+            TIME_INTERVAL = 2 * 60 * 1000;
+        } else {
+            TIME_INTERVAL = 3 * 60 * 60 * 1000 * 24;
+        }
+    }
 
     @Nullable
     @Override
@@ -52,7 +60,7 @@ public class SystemDialogService extends Service implements View.OnClickListener
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mContext = getApplicationContext();
-        Log.w("systemDialog", "show system dialog onStartCommand");
+        Log.w("systemDialog", "show system dialog onStartCommand: " + TIME_INTERVAL);
         if(overPopTime()){
 //            popAlertWindow();
             showDialog();

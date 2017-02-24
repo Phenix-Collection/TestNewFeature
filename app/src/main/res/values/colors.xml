@@ -6,6 +6,8 @@
 
     <color name="black">#000000</color>
 
+    <color name="white">@android:color/white</color>
+
     <!--google plus color begin-->
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#ff7fa87f</color>
@@ -778,4 +780,8 @@
     <color name="write_place_review_bg">#ffe5e5e5</color>
     <color name="year_row_divider">#ffc6c6c6</color>
     <color name="youtube_settings_prompt_bg">#ff262626</color>
+
+
+    <!--infocardbaseview-->
+    <color name="regular_divider_color">#3affffff</color>
 </resources>
