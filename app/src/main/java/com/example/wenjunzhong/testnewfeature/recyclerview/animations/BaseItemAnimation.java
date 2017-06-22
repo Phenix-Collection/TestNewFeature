@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator.animations;
+package com.example.wenjunzhong.testnewfeature.recyclerview.animations;
 
 import android.support.annotation.NonNull;
 import android.support.v4.animation.AnimatorCompatHelper;

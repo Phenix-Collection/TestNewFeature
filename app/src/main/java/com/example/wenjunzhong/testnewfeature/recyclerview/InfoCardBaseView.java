@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator;
+package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;

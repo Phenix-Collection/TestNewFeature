@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,8 +31,11 @@ public class Fragment1 extends BaseFragment {
             rootView = inflater.inflate(R.layout.fragment1_layout, container, false);
 
             mRecyclerView = (RecyclerView) rootView.findViewById(R.id.name_list);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
+            mRecyclerView.setLayoutManager(layoutManager);
+          //  layoutManager.setReverseLayout(true);
             mRecyclerView.setAdapter(new RecyclerAdapter(this.getActivity()));
+
             // button = (Button) rootView.findViewById(R.id.fragment1_button);
             // button.setOnClickListener(new View.OnClickListener() {
             // @Override

@@ -2,6 +2,7 @@ package com.example.wenjunzhong.testnewfeature;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     private LayoutInflater inflater;
+    private int count = 0;
 
     public RecyclerAdapter(Context context) {
         inflater = LayoutInflater.from(context);
@@ -29,12 +31,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        count += 1;
+        Log.w("test", "onCreateViewHolder " + count);
         return new MyViewHolder(inflater.inflate(R.layout.recycler_item_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.updateData(mList.get(position));
+        Log.w("test", "onBindViewHolder " + position);
     }
 
     @Override

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 def apkNameDate = new Date().format("yyyyMMdd_HHmmss");
 android {
     compileSdkVersion 24
@@ -47,20 +48,27 @@ android {
 
 dependencies {
     // 默认不添加TaklingData统计sdk
-    compile fileTree(dir: 'libs',excludes: ['TalkingData_*.jar'], include: ['*.jar'])
+    compile fileTree(dir: 'libs', excludes: ['TalkingData_*.jar'], include: ['*.jar'])
     googleplayCompile files("libs/TalkingData_Analytics_Android_SDK_GP_V2_2_37.jar")
     othersCompile files("libs/TalkingData_Analytics_Android_SDK_V2_2_46.jar")
 
 
-    testCompile 'junit:junit:4.12'
+
+
+
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
-
     compile 'com.google.firebase:firebase-ads:10.0.1'
-
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
+    testCompile 'junit:junit:4.12'
     debugCompile 'com.github.moduth:blockcanary-android:1.2.1'
     releaseCompile 'com.github.moduth:blockcanary-no-op:1.2.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}

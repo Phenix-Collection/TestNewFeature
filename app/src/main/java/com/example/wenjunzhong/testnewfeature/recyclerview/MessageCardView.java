@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator;
+package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 import android.content.Context;
 import android.util.AttributeSet;

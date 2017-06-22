@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator;
+package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.wenjunzhong.testnewfeature.R;
-import com.example.wenjunzhong.testnewfeature.recyclerviewanimator.animations.LeftInRightOutAnimation;
+import com.example.wenjunzhong.testnewfeature.recyclerview.animations.LeftInRightOutAnimation;
 
 /**
  *

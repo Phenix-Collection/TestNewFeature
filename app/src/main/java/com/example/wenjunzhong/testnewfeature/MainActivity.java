@@ -1,6 +1,10 @@
 package com.example.wenjunzhong.testnewfeature;
 
 import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -13,7 +17,6 @@ import android.view.WindowManager;
 
 import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
-import com.example.wenjunzhong.testnewfeature.recyclerviewanimator.RecyclerAnimationActivity;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
@@ -56,10 +59,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.w("onClick", " " + v.getId());
         switch(v.getId()){
             case R.id.button_1:
-                gotoActivity(SnackBarActivity.class);
+//                gotoActivity(SnackBarActivity.class);
+                createNotification();
                 break;
             case R.id.button_2:
-                gotoActivity(ToolbarScrollActivity.class);
+                gotoActivity(WebViewActivity.class);
                 StatisticalAgent.onEvent(this, "login", "2");
                 break;
             case R.id.button_3:
@@ -84,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testHandlerThread.start();
                 break;
             case R.id.button_8:
-                gotoActivity(RecyclerAnimationActivity.class);
+//                gotoActivity(RecyclerAnimationActivity.class);
+                gotoActivity(RecyclerViewOnTouchItemListenerActivity.class);
                 break;
             default:
                 break;
@@ -95,9 +100,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void googleServices() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
-        Uri content_url = Uri.parse("http://www.goplaycn.com/?from=netpas");
+//        Uri content_url = Uri.parse("https://play.google.com/store/apps/details?id=com.Mainews.news");
+        Uri content_url = Uri.parse("tstream://tstream.app");
         intent.setData(content_url);
         if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }else{
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.Mainews.news"));
             startActivity(intent);
         }
     }
@@ -180,5 +189,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             builder.append(temp);
         }
         return builder.toString();
+    }
+
+
+    int noticeIndex = 1;
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void createNotification() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setAction("abcd " + noticeIndex);
+        PendingIntent contentIntent =
+                PendingIntent.getActivity(this, noticeIndex, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification.Builder notifyBuilder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setWhen(System.currentTimeMillis())
+                .setContentTitle("拦截: " + getResources().getString(R.string.app_name))
+                .setContentText("内容:" + ": " + noticeIndex)
+                .setContentIntent(contentIntent)
+                .setDefaults(Notification.DEFAULT_LIGHTS);
+
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Notification notification = notifyBuilder.build();
+        nm.notify(noticeIndex, notification);
+        noticeIndex++;
     }
 }

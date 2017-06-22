@@ -72,7 +72,8 @@ public class WebViewActivity extends AppCompatActivity {
         settings.setLoadsImagesAutomatically(true);
         settings.setSupportZoom(true);
         settings.setBuiltInZoomControls(true);
-        mWebView.loadUrl("http://www.goplaycn.com/?from=netpas");
+//        mWebView.loadUrl("http://m.seekdailynews.com/news/1/3914199?from=5");
+        mWebView.loadUrl("https://www.baidu.com");
     }
 
 

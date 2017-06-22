@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator;
+package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +14,7 @@ import com.example.wenjunzhong.testnewfeature.R;
 import java.util.ArrayList;
 
 /**
+ *
  * Created by wenjun.zhong on 2017/2/21.
  */
 

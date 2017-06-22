@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature.recyclerviewanimator;
+package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 /**
  * Created by wenjun.zhong on 2017/2/24.
