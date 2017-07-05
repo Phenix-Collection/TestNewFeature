@@ -1,9 +1,11 @@
 package com.example.wenjunzhong.testnewfeature;
 
 import android.app.Application;
+import android.util.Log;
 
-import com.github.moduth.blockcanary.BlockCanary;
-import com.tendcloud.tenddata.TCAgent;
+import com.github.moduth.blockcanary.*;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by wenjun.zhong on 2016/11/9.
@@ -20,11 +22,26 @@ public class TestApplication extends Application {
         instance = this;
         startTime = System.currentTimeMillis();
         BlockCanary.install(this, new AppBlockCanaryContext());
-        TCAgent.LOG_ON=true;
+      //  TCAgent.LOG_ON=true;
+        setLeakCanary();
     }
 
 
     public static TestApplication getInstance() {
         return instance;
+    }
+
+
+    private  void setLeakCanary(){
+        if(BuildConfig.FLAVOR.equals("monkey")){
+            try{
+                Class leakCanaryClass = Class.forName("eric.leakcanary.LeakCanaryForTest");
+                Method method = leakCanaryClass.getDeclaredMethod("install", Application.class);
+                method.setAccessible(true);
+                method.invoke(null, this);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }

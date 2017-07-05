@@ -1,1 +1,1 @@
-include ':app', ':learnkotlin'
+include ':app', ':learnkotlin', ':leakcanary'

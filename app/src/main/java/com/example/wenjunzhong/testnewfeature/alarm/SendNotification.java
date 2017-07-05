@@ -9,7 +9,7 @@ import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.wenjunzhong.testnewfeature.R;
-import com.example.wenjunzhong.testnewfeature.TestFragmentActivity;
+import com.example.wenjunzhong.testnewfeature.fragments.TestFragmentActivity;
 
 
 /**

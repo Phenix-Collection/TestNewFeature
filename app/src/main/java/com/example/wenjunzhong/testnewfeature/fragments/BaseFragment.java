@@ -1,6 +1,7 @@
-package com.example.wenjunzhong.testnewfeature;
+package com.example.wenjunzhong.testnewfeature.fragments;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
@@ -10,6 +11,7 @@ import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
  */
 
 public class BaseFragment extends Fragment {
+    RecyclerView.RecycledViewPool mPool;
     public void onClickRefresh(View v) {}
 
     @Override

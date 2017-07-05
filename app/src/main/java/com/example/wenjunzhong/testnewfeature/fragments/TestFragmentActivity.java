@@ -1,4 +1,4 @@
-package com.example.wenjunzhong.testnewfeature;
+package com.example.wenjunzhong.testnewfeature.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.example.wenjunzhong.testnewfeature.BuildConfig;
+import com.example.wenjunzhong.testnewfeature.R;
+import com.example.wenjunzhong.testnewfeature.fragments.BaseFragment;
+import com.example.wenjunzhong.testnewfeature.fragments.MainFragmentPagerAdapter;
 
 /**
  *

@@ -1,26 +1,25 @@
-package com.example.wenjunzhong.testnewfeature;
+package com.example.wenjunzhong.testnewfeature.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.wenjunzhong.testnewfeature.R;
 
 /**
  * Created by wenjun.zhong on 2016/9/28.
  */
 
-public class Fragment1 extends BaseFragment {
-    private static final String TAG = "Fragment1";
+public class Fragment3 extends BaseFragment {
+    private static final String TAG = "Fragment3";
     View rootView;
     Button button;
-    protected RecyclerView mRecyclerView;
 
 
 
@@ -28,21 +27,14 @@ public class Fragment1 extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment1_layout, container, false);
-
-            mRecyclerView = (RecyclerView) rootView.findViewById(R.id.name_list);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-            mRecyclerView.setLayoutManager(layoutManager);
-          //  layoutManager.setReverseLayout(true);
-            mRecyclerView.setAdapter(new RecyclerAdapter(this.getActivity()));
-
-            // button = (Button) rootView.findViewById(R.id.fragment1_button);
-            // button.setOnClickListener(new View.OnClickListener() {
-            // @Override
-            // public void onClick(View v) {
-            // button.setEnabled(false);
-            // }
-            // });
+            rootView = inflater.inflate(R.layout.fragment2_layout, container, false);
+            button = (Button) rootView.findViewById(R.id.fragment1_button);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    button.setEnabled(false);
+                }
+            });
             Log.w(TAG, "onCreateView load root view ");
         }
         Log.w(TAG, "onCreateView");
@@ -52,13 +44,11 @@ public class Fragment1 extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w(TAG, "onCreate");
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.w(TAG, "onActivityCreated");
     }
 
     @Override
@@ -123,8 +113,7 @@ public class Fragment1 extends BaseFragment {
 
     @Override
     public void onClickRefresh(View v) {
-        // Snackbar snackbar = Snackbar.make(v, "abcd--1", Snackbar.LENGTH_SHORT);
-        // snackbar.show();
-        mRecyclerView.smoothScrollBy(0, 30);
+        Snackbar snackbar = Snackbar.make(v, "abcd--3", Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 }

@@ -39,7 +39,6 @@ public class SwipeRefreshActivity extends BaseActivity implements SwipeRefreshLa
             @Override
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(false);
-                RecyclerAdapter.mList.add(0, String.format(Locale.ENGLISH, "下拉刷新#%d", System.currentTimeMillis()));
                 mRecyclerView.getAdapter().notifyDataSetChanged();
             }
         }, 8000);

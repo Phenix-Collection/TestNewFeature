@@ -15,31 +15,46 @@ import java.util.ArrayList;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>{
 
-    public static ArrayList<String> mList = new ArrayList<>(30);
-    static {
-        for (int index = 0; index < 30; index ++){
-            mList.add("ab#" + index);
-        }
-    }
-
+    ArrayList<String> mList = new ArrayList<>(30);
+    private static int createCount = 0;
     private LayoutInflater inflater;
     private int count = 0;
 
-    public RecyclerAdapter(Context context) {
+    private String tag;
+    public RecyclerAdapter(Context context, String tag) {
+        init(context, tag);
+    }
+
+    private void init(Context context, String tag) {
         inflater = LayoutInflater.from(context);
+
+        for (int index = 0; index < 60; index ++){
+            mList.add(tag + " ab#" + index);
+        }
+        this.tag = tag;
+    }
+
+    public RecyclerAdapter(Context context) {
+        init(context, "");
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         count += 1;
-        Log.w("test", "onCreateViewHolder " + count);
-        return new MyViewHolder(inflater.inflate(R.layout.recycler_item_layout, parent, false));
+        Log.w("test", tag + " onCreateViewHolder " + count);
+        MyViewHolder viewHolder = new MyViewHolder(inflater.inflate(R.layout.recycler_item_layout, parent, false));
+        viewHolder.itemView.setTag(tag);
+        Log.w("test12", "onCreateViewHolder: " + createCount);
+        createCount += 1;
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        Object object = holder.itemView.getTag();
+
         holder.updateData(mList.get(position));
-        Log.w("test", "onBindViewHolder " + position);
+        Log.w("test", tag + " onBindViewHolder " + position + ", tag: " + (object instanceof String ? object : "null"));
     }
 
     @Override

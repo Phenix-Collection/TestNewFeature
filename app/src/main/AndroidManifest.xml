@@ -37,7 +37,7 @@
         <activity android:name=".SwipeRefreshActivity" />
         <activity android:name=".TextInputlayoutActivity" />
         <activity
-            android:name=".TestFragmentActivity"
+            android:name=".fragments.TestFragmentActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".TestNetworkConnectChangeActivity"

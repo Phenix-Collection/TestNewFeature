@@ -45,6 +45,7 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
         if (0 != mList.size() - 1) {
             notifyItemRangeChanged(0, mList.size());
         }
+
     }
 
     public void addItemBottom() {
@@ -111,11 +112,13 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
 
     @Override
     public MyHolderView onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.w("testRecycler", "onCreateViewHolder ");
         return new MyHolderView(inflater.inflate(R.layout.test_recycler_item_view_stub, parent, false));
     }
 
     @Override
     public void onBindViewHolder(final MyHolderView holder, final int position) {
+        Log.w("testRecycler", "onBindViewHolder position:" + position);
         holder.setText(mList.get(position));
         // if(mListener != null) {
         holder.rootView.setOnClickListener(new View.OnClickListener() {

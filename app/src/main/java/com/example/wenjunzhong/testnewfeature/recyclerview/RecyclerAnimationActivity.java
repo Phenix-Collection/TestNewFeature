@@ -2,6 +2,7 @@ package com.example.wenjunzhong.testnewfeature.recyclerview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -33,7 +34,7 @@ public class RecyclerAnimationActivity extends Activity implements View.OnClickL
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new RecyclerAnimationAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new LeftInRightOutAnimation());
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.notifyDataSetChanged();
     }
 
@@ -42,12 +43,14 @@ public class RecyclerAnimationActivity extends Activity implements View.OnClickL
         switch (v.getId()) {
             case R.id.add_item_top:
                 mAdapter.addItemTop();
+                mRecyclerView.smoothScrollToPosition(0);
                 break;
             case R.id.add_item_middle:
                 mAdapter.addItemMiddle();
                 break;
             case R.id.add_item_bottom:
                 mAdapter.addItemBottom();
+                mRecyclerView.smoothScrollToPosition(mAdapter.getItemCount() - 1);
                 break;
             case R.id.delete_item_top:
                 mAdapter.deleteItemTop();
