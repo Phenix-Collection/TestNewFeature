@@ -20,7 +20,7 @@ android {
 
         //用于压力测试
         monkey{
-
+            applicationId "com.example.wenjunzhong.monkey"
         }
     }
 
