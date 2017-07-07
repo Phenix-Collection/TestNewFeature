@@ -18,7 +18,6 @@ import android.view.WindowManager;
 import com.example.wenjunzhong.testnewfeature.fragments.TestFragmentActivity;
 import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
-import com.example.wenjunzhong.testnewfeature.recyclerview.RecyclerAnimationActivity;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_8:
 //                gotoActivity(RecyclerAnimationActivity.class);
-                gotoActivity(RecyclerAnimationActivity.class);
+                gotoActivity(TextInputlayoutActivity.class);
                 break;
             default:
                 break;

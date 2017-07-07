@@ -1,4 +1,5 @@
 package com.example.wenjunzhong.testnewfeature.widgets;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -11,9 +12,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -43,6 +42,9 @@ public class ShowHidePasswordEditText extends EditText {
     private int visibilityIndicatorHide;
 
     private int additionalTouchTargetSize = DEFAULT_ADDITIONAL_TOUCH_TARGET_SIZE;
+
+    // 右边控制密码显示的图标是否显示了
+    private boolean isShowedInstruction = false;
 
 
     public ShowHidePasswordEditText(Context context) {
@@ -95,24 +97,31 @@ public class ShowHidePasswordEditText extends EditText {
             showPasswordVisibilityIndicator(true);
         }
 
-        addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+        /*
+         * addTextChangedListener(new TextWatcher() {
+         * 
+         * @Override public void beforeTextChanged(CharSequence s, int start, int count, int after)
+         * { }
+         * 
+         * @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+         * if (s.length() > 0) { showPasswordVisibilityIndicator(true); } else {
+         * 
+         * showPasswordVisibilityIndicator(false); } }
+         * 
+         * @Override public void afterTextChanged(Editable s) { } });
+         */
+    }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-                    showPasswordVisibilityIndicator(true);
-                } else {
-                    showPasswordVisibilityIndicator(false);
-                }
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        if (focused) {
+            showPasswordVisibilityIndicator(true);
+        } else {
+            if (TextUtils.isEmpty(this.getText().toString())) {
+                showPasswordVisibilityIndicator(false);
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+        }
     }
 
     private boolean isLeftToRight() {
@@ -162,6 +171,7 @@ public class ShowHidePasswordEditText extends EditText {
             if ((leftToRight && (x >= (this.getRight() - (drawableWidthWithPadding)))) ||
                     (!leftToRight && (x <= (this.getLeft() + (drawableWidthWithPadding))))) {
 
+
                 togglePasswordVisibility();
 
                 //use this to prevent the keyboard from coming up
@@ -173,8 +183,10 @@ public class ShowHidePasswordEditText extends EditText {
     }
 
     private void showPasswordVisibilityIndicator(boolean show) {
-        //Log.d(TAG, "showPasswordVisibilityIndicator() called with: " + "show = [" + show + "]");
-        //preserve and existing CompoundDrawables
+        if (show == isShowedInstruction) {
+            return;
+        }
+        isShowedInstruction = show;
         Drawable[] existingDrawables = getCompoundDrawables();
         Drawable left = existingDrawables[0];
         Drawable top = existingDrawables[1];
@@ -224,6 +236,8 @@ public class ShowHidePasswordEditText extends EditText {
 
         // Restore selection
         this.setSelection(selectionStart, selectionEnd);
+
+        isShowedInstruction = false;
 
         // Toggle flag and show indicator
         isShowingPassword = !isShowingPassword;

@@ -43,7 +43,7 @@
 
     <com.example.wenjunzhong.testnewfeature.widgets.ShowHidePasswordEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:hint="Password1111"
         app:drawable_show="@drawable/ic_launcher_trashcan_active_holo"
         app:drawable_hide="@drawable/ic_launcher_trashcan_normal_holo"
