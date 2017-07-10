@@ -5,7 +5,9 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_8:
 //                gotoActivity(RecyclerAnimationActivity.class);
-                gotoActivity(TextInputlayoutActivity.class);
+                getOpenFacebookIntent(this);
                 break;
             default:
                 break;
@@ -213,5 +215,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Notification notification = notifyBuilder.build();
         nm.notify(noticeIndex, notification);
         noticeIndex++;
+    }
+
+    public void getOpenFacebookIntent(Context context) {
+
+        Intent intent;
+        try {
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            // page id 查询：https://findmyfbid.com/
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/396904383813069"));
+        } catch (Exception e) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/VoyagerVPN"));
+        }
+        startActivity(intent);
+    }
+
+    public static Intent newFacebookIntent(PackageManager pm, String url) {
+        Uri uri = Uri.parse(url);
+
+        /*
+         * try { ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
+         * if (applicationInfo.enabled) { // http://stackoverflow.com/a/24547437/1048340 uri =
+         * Uri.parse("fb://facewebmodal/f?href=" + url); } } catch
+         * (PackageManager.NameNotFoundException ignored) { }
+         */
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 }
