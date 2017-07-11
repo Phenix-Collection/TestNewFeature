@@ -1,7 +1,7 @@
 package com.example.wenjunzhong.testnewfeature
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import com.example.wenjunzhong.testnewfeature.views.TestInflatLayout
 
@@ -19,4 +19,6 @@ class InflateActivity : AppCompatActivity() {
         val button2: Button = findViewById(R.id.test_inflate_button2) as Button
         button2.setOnClickListener { testInflateLayout.changeTextView2() }
     }
+
+
 }

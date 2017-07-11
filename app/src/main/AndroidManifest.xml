@@ -122,6 +122,8 @@
         <activity android:name=".InflateActivity"></activity>
 
         <activity android:name=".RecyclerViewOnTouchItemListenerActivity"/>
+
+        <service android:name=".services.UpdateIntentService" />
     </application>
 
 </manifest>

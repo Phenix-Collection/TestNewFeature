@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import com.example.wenjunzhong.testnewfeature.fragments.TestFragmentActivity;
 import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
+import com.example.wenjunzhong.testnewfeature.services.UpdateIntentService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
 import java.io.UnsupportedEncodingException;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.button_1:
 //                gotoActivity(SnackBarActivity.class);
-                createNotification();
+                createUpdateNotification();
                 break;
             case R.id.button_2:
                 gotoActivity(WebViewActivity.class);
@@ -221,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent;
         try {
-            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            context.getPackageManager().getPackageInfo("com.facebook.katana", PackageManager.GET_ACTIVITIES);
             // page id 查询：https://findmyfbid.com/
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/396904383813069"));
         } catch (Exception e) {
@@ -240,5 +242,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * (PackageManager.NameNotFoundException ignored) { }
          */
         return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+
+    private void createUpdateNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle(getResources().getString(R.string.title_activity_main2));
+        builder.setContentText(getResources().getString(R.string.tip_update));
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        Intent notifyIntent = new Intent(this, UpdateIntentService.class);
+        notifyIntent.putExtra("path", "http://www.lvxing.im/downloads/Voyager.apk");
+        PendingIntent notifyPendingIntent =
+                PendingIntent.getService(this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(notifyPendingIntent);
+        Notification notification = builder.build();
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(1, notification);
     }
 }
