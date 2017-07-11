@@ -24,3 +24,11 @@ public void *(***);
 }
 -keep class com.talkingdata.sdk.TalkingDataSDK {public *;}
 -keep class com.apptalkingdata.** {*;}
+
+##使用注解防止代码混淆
+-keep,allowobfuscation @interface com.example.wenjunzhong.testnewfeature.annotation.NotProguard
+
+-keep @com.example.wenjunzhong.testnewfeature.annotation.NotProguard class *
+-keepclassmembers class * {
+    @com.example.wenjunzhong.testnewfeature.annotation.NotProguard *;
+}
