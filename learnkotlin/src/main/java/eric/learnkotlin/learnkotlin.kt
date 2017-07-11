@@ -1,9 +1,6 @@
 package eric.learnkotlin
 
-import eric.learnkotlin.annotation.Apple
-import eric.learnkotlin.annotation.FruitInfoUilt
-import eric.learnkotlin.annotation.database.Member
-import eric.learnkotlin.annotation.database.TableCreator
+import eric.learnkotlin.annotation.TestIntDef
 import eric.learnkotlin.proxy.Car
 import eric.learnkotlin.proxy.IVehical
 import eric.learnkotlin.proxy.VehicalProxy
@@ -29,6 +26,9 @@ fun main(args: Array<String>) {
     var proxy : IVehical = vehicalProxy.create()
     proxy.run()
     ReflectionUtil.MyClassReflection()
+
+    val testIntDef = TestIntDef()
+    testIntDef.code = 4
 }
 
 fun max(a: Int, b: Int): Int = if(a > b) a else b

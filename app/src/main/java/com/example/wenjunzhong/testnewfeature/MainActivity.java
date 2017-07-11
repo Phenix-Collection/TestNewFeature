@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.wenjunzhong.testnewfeature.annotation.TestIntDef;
 import com.example.wenjunzhong.testnewfeature.fragments.TestFragmentActivity;
 import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
 import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
+
+        TestIntDef test = new TestIntDef();
+        test.setCode(TestIntDef.INT_DEF_CODE_1);
 
     }
 
