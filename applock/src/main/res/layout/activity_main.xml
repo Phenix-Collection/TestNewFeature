@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="eric.applock.MainActivity">
+
+    <Button
+        android:id="@+id/reset_lock_state"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="reset all lock state"
+        android:onClick="resetLockState"/>
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import eric.learnkotlin.proxy.Car
 import eric.learnkotlin.proxy.IVehical
 import eric.learnkotlin.proxy.VehicalProxy
 import eric.learnkotlin.reflection.ReflectionUtil
+import eric.learnkotlin.rx.TestRx
 
 /**
  *
@@ -29,6 +30,8 @@ fun main(args: Array<String>) {
 
     val testIntDef = TestIntDef()
     testIntDef.code = 4
+
+    TestRx.testObservable()
 }
 
 fun max(a: Int, b: Int): Int = if(a > b) a else b
@@ -38,6 +41,10 @@ class Rectangle(val height: Int, val width: Int){
         get() {
             return height == width
         }
+}
+
+fun test(){
+
 }
 
 

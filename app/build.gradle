@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.jakewharton.butterknife'
 def apkNameDate = new Date().format("yyyyMMdd_HHmmss");
 android {
     compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.example.wenjunzhong.testnewfeature"
@@ -12,15 +13,22 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    flavorDimensions "default"
     productFlavors {
         googleplay {
+            dimension "default"
         }
         others {
+            dimension "default"
         }
 
         //用于压力测试
         monkey{
             applicationId "com.example.wenjunzhong.monkey"
+            dimension "default"
+            versionCode 2
+            versionName "2.0"
         }
     }
 
@@ -36,16 +44,22 @@ android {
 
     android.applicationVariants.all { variant ->
         def buildType = variant.buildType
-        variant.outputs.each { output ->
+        variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 def fileName
-                if (buildType.name.equals("debug")) {
-                    fileName = "Test_v" + defaultConfig.versionName + "_" + buildType.name + "_${variant.productFlavors[0].name}" + ".apk"
-                } else {
-                    fileName = "Test_v" + defaultConfig.versionName + "_" + apkNameDate + "_" + buildType.name + "_${variant.productFlavors[0].name}" + ".apk"
+                def prefix = "Test_v"
+                def productName = variant.productFlavors[0].name
+                if(variant.productFlavors[0].name == "monkey"){
+                    prefix = "Monkey_v"
                 }
-                output.outputFile = new File(outputFile.parent + "/v" + defaultConfig.versionName, fileName)
+                if (buildType.name.equals("debug")) {
+                    fileName = prefix + variant.versionName + "_" + buildType.name + "_${productName}" + ".apk"
+                } else {
+                    fileName = prefix + variant.versionName + "_" + apkNameDate + "_" + buildType.name + "_${productName}" + ".apk"
+                }
+                outputFileName  = fileName
+           //     output.outputFile = new File(outputFile.parent + "/v" + variant.versionName, fileName)
             }
         }
     }
@@ -53,11 +67,9 @@ android {
 
 dependencies {
     // 默认不添加TaklingData统计sdk
-    compile fileTree(dir: 'libs', excludes: ['TalkingData_*.jar'], include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], excludes: ['TalkingData_*.jar'], dir: 'libs')
     googleplayCompile files("libs/TalkingData_Analytics_Android_SDK_GP_V2_2_37.jar")
     othersCompile files("libs/TalkingData_Analytics_Android_SDK_V2_2_46.jar")
-
-
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
@@ -68,11 +80,12 @@ dependencies {
     debugCompile 'com.github.moduth:blockcanary-android:1.2.1'
     releaseCompile 'com.github.moduth:blockcanary-no-op:1.2.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
     monkeyCompile project(':leakcanary')
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    if(UpgradeIsBuildLibrary.toBoolean()){
+        compile project(':upgrade')
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
-repositories {
-    mavenCentral()
-}

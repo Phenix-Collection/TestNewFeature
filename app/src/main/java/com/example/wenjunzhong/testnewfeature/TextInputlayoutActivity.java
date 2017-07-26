@@ -6,24 +6,51 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by wenjun.zhong on 2016/4/14.
  */
-public class TextInputlayoutActivity extends AppCompatActivity{
+public class TextInputlayoutActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText userEdit;
+    @BindView(R.id.status_bar_view)
+    View statusBarView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.user)
+    TextInputLayout user;
+    @BindView(R.id.password_button)
+    Button passwordButton;
+    @BindView(R.id.password_edit)
+    TextInputEditText passwordEdit;
+    @BindView(R.id.password)
+    TextInputLayout password;
+    @BindView(R.id.custom_edit_layout_img)
+    ImageView customEditLayoutImg;
+    @BindView(R.id.custom_edit_layout_edit)
+    EditText customEditLayoutEdit;
+    @BindView(R.id.user_edit)
+    EditText userEdit;
     private boolean isShowPassword = false;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.textinput_activity);
+        ButterKnife.bind(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
             // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -35,25 +62,12 @@ public class TextInputlayoutActivity extends AppCompatActivity{
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
-        userEdit = (EditText) findViewById(R.id.user_edit);
-
-//        findViewById(R.id.password_button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(isShowPassword){
-//                    isShowPassword = false;
-//                    userEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-//                }else{
-//                    isShowPassword = true;
-//                    userEdit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-//                }
-//            }
-//        });
 
 
-        final TextInputLayout password = (TextInputLayout )findViewById(R.id.password);
-//        password.setPasswordVisibilityToggleEnabled(true);
-//        password.setPasswordVisibilityToggleDrawable(R.drawable.password_visibility_button);
+
+        final TextInputLayout password = (TextInputLayout) findViewById(R.id.password);
+        // password.setPasswordVisibilityToggleEnabled(true);
+        // password.setPasswordVisibilityToggleDrawable(R.drawable.password_visibility_button);
         TextInputEditText editText = (TextInputEditText) findViewById(R.id.password_edit);
         password.setErrorEnabled(true);
         editText.addTextChangedListener(new TextWatcher() {
@@ -64,11 +78,11 @@ public class TextInputlayoutActivity extends AppCompatActivity{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() > 4){
+                if (s.length() > 4) {
                     password.setError("Password Error");
-                }else{
+                } else {
                     password.setError("");
-//                    password.setErrorEnabled(false);
+                    // password.setErrorEnabled(false);
                 }
             }
 
@@ -78,7 +92,7 @@ public class TextInputlayoutActivity extends AppCompatActivity{
             }
         });
 
-
+        ButterKnife.bind(this);
     }
 
     public int getStatusBarHeight() {
@@ -88,5 +102,18 @@ public class TextInputlayoutActivity extends AppCompatActivity{
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
+    @OnClick(R.id.password_button)
+    @Override
+    public void onClick(View v) {
+
     }
 }
