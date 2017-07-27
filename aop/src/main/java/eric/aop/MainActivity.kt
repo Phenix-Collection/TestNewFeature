@@ -6,13 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import eric.aop.aspectj.AspectJActivity
+import eric.aop.aspectj.TestAround
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.aspectj_button).setOnClickListener(this)
+        findViewById<View>(R.id.aspectj_button).setOnClickListener(this)
+
     }
 
     override fun onClick(p0: View?) {
