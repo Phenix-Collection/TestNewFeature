@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.wenjunzhong.testnewfeature.customView.HorizontalBarView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:bar_fillPercentage="30.0"
+        app:bar_text="Yes we can: 30%"
+        app:bar_textPadding="8dp"
+        app:bar_textSize="10sp" />
+
+
+    <com.example.wenjunzhong.testnewfeature.customView.HorizontalBarView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:bar_fillPercentage="70.0"
+        app:bar_text="Yes we can: 70%"
+        app:bar_textPadding="8dp"
+        app:bar_textSize="10sp" />
+
+</LinearLayout>

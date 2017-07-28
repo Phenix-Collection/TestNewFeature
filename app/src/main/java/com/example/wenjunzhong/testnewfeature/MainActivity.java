@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import com.example.wenjunzhong.testnewfeature.annotation.TestIntDef;
 import com.example.wenjunzhong.testnewfeature.fragments.TestFragmentActivity;
 import com.example.wenjunzhong.testnewfeature.handlerthread.TestHandlerThread;
-import com.example.wenjunzhong.testnewfeature.notification.NotificationActivity;
 import com.example.wenjunzhong.testnewfeature.services.UpdateIntentService;
 import com.example.wenjunzhong.testnewfeature.statistical.StatisticalAgent;
 
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 StatisticalAgent.onEvent(this, "login", "5");
                 break;
             case R.id.button_6:
-                gotoActivity(NotificationActivity.class);
+                gotoActivity(CustomViewActivity.class);
                 break;
             case R.id.button_7:
                 // SystemClock.sleep(5100);
