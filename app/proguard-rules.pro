@@ -32,3 +32,15 @@ public void *(***);
 -keepclassmembers class * {
     @com.example.wenjunzhong.testnewfeature.annotation.NotProguard *;
 }
+
+
+##  release 版本不输出log being
+## 注意：要这个功能生效必须把getDefaultProguardFile('proguard-android.txt') 改为getDefaultProguardFile('proguard-android-optimize.txt')
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static *** d(...);
+    public static *** w(...);
+    public static *** v(...);
+    public static *** i(...);
+}
+##  release 版本不输出log end
