@@ -80,7 +80,6 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:10.0.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
-    testCompile 'junit:junit:4.12'
     debugCompile 'com.github.moduth:blockcanary-android:1.2.1'
     releaseCompile 'com.github.moduth:blockcanary-no-op:1.2.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -90,6 +89,8 @@ dependencies {
     if(UpgradeIsBuildLibrary.toBoolean()){
         compile project(':upgrade')
     }
+
+    compile 'com.google.zxing:core:3.2.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

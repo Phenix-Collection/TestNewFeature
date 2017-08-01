@@ -2,6 +2,7 @@ package com.example.wenjunzhong.testnewfeature;
 
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,7 +12,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,7 +28,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private int index = 0;
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testHandlerThread.start();
                 break;
             case R.id.button_8:
-//                gotoActivity(RecyclerAnimationActivity.class);
-                getOpenFacebookIntent(this);
+                gotoActivity(QRActivity.class);
+                // getOpenFacebookIntent(this);
                 break;
             default:
                 break;
