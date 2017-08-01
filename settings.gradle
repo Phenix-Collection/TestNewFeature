@@ -1,1 +1,1 @@
-include ':app', ':learnkotlin', ':leakcanary', ':upgrade', ':applock', ':aop'
+include ':app', ':learnkotlin', ':leakcanary', ':upgrade', ':applock', ':aop', ':ping'
