@@ -13,6 +13,15 @@
             </intent-filter>
         </activity>
         <service android:name=".DownloadService" />
+
+        <provider
+            android:authorities="eric.upgrade.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data android:resource="@xml/upgrade_lib_file_paths"
+                android:name="android.support.FILE_PROVIDER_PATHS"/>
+        </provider>
     </application>
 
 </manifest>

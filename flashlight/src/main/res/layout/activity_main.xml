@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="eric.flashlight.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_0"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:onClick="open"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_1"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="1"
+            android:onClick="open"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_2"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="2"
+            android:onClick="open"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_3"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="3"
+            android:onClick="open"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_sos"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="sos"
+            android:onClick="open"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/flash_light_switch"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Open"
+        android:layout_centerInParent="true"
+        android:onClick="onClickFlash"
+        />
+
+
+    <View
+        android:id="@+id/flash_light_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="onClickButton"/>
+
+    <View
+        android:id="@+id/screen_light_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="onClickButton"/>
+
+</RelativeLayout>
